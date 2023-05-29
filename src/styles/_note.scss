@@ -1,0 +1,129 @@
+.card{
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  width: 500px;
+  min-height: 400px;
+  height: fit-content;
+
+  padding: $padding-small;
+  gap:calc($gap/2);
+
+  border-radius: $border-radius;
+  border: 1px solid $primary-500;
+  background: linear-gradient(45deg, $primary-400 5%, $primary-700);
+
+  overflow:hidden;
+  
+  *{
+    color: $primary-200;
+  }
+
+  input, textarea, select{
+    background: transparent;
+    border:none;
+    border-bottom:1px solid $primary-300;
+    border-radius: 0;
+    font-size: 2rem;
+    padding: 5px;
+    width: 100%;
+  }
+
+  textarea{
+    font-size: 1rem;
+    flex-grow: 1;
+    min-height: 200px;
+    overflow: scroll
+  }
+
+  
+  p{
+    overflow-x:hidden;
+    overflow-y: scroll;
+    height: 200px;
+    flex-grow: 1;
+  }  
+
+  select{ 
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  div.card__actions{
+    display: flex;
+    justify-content: end;
+    gap:calc($gap/2);
+    width: 100%;
+    height: 30px;
+
+    color: $primary-200;
+    text-align: center;
+    
+    button {
+      display: flex;
+      place-items: center;
+
+      svg {
+        fill: $primary-100;
+        transform: scale(1.2)
+      }
+    }
+  }  
+  .card__categories{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      width: 100%;
+      gap: calc($gap/2);
+
+      .card__category{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 20px;
+        border: 1px solid $primary-300;
+        height: 30px;
+        
+      }
+      p {
+        height: 100%;
+        padding: 0 7px
+      }
+      svg{
+        margin-left: 5px;
+      }
+    }
+}
+
+@media screen and (max-width:1500px){
+
+  .card{
+    width: 400px;
+  }
+
+}
+
+@media screen and (max-width:1200px){
+
+  .card{
+    width: 350px;
+  }
+
+}
+@media screen and (max-width:800px){
+
+  .card{
+    width: 300px;
+  }
+
+}
+// @media screen and (max-width:500px){
+
+//   .card{
+//     width: 250px;
+//   }
+
+// }

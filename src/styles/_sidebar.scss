@@ -1,0 +1,79 @@
+$small_sidebar_height: 100px;
+
+aside.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap:$gap;
+  width: 30%;
+  max-width: 320px;
+  min-height: 100%;
+  padding: $padding-small;
+  background-color: transparentize($color: $primary-300, $amount: .5);
+  
+  button{
+    width: 100%;
+  }
+  input:not([type='checkbox']){
+    width: 100%;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    form{
+      display: flex;
+      flex-direction: column;
+      gap: calc($gap);
+      
+      li{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: $gap;
+        
+        // input[type='checkbox']{
+        //   width: 20%;
+        // }
+        textarea{
+          width: 100%;
+          height: 10rem;
+        }
+      }
+      
+    }
+
+    
+  }
+}
+
+@media screen and (max-width: 1024px){
+  aside.sidebar{
+    width: 30%;
+    
+    ul>li>ul{
+      padding:0
+    }
+  }
+}
+  
+
+@media screen and (max-width: 640px) {
+  aside.sidebar {
+    flex-direction: row;
+    width: 100%;
+    min-height: $small_sidebar_height;
+    max-width: none;
+  
+   
+
+    ul{
+      width: 100%;
+      flex-direction: column;
+    
+      // width: 30%;
+      // height: fit-content;
+    }
+  }
+}
