@@ -32,7 +32,6 @@ const create = (note: Note, dispatch: AppDispatch): void => {
 };
 
 const deleteNote = (id: number, dispatch: AppDispatch): void => {
-  console.log(id);
   const currentNotes = localStorage.getItem(LOCALSTORAGE_NOTES_KEY);
   if (currentNotes) {
     const notes = JSON.parse(currentNotes);

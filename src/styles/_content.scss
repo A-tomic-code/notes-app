@@ -27,7 +27,7 @@
         display: flex;
         gap: $gap;
         margin-bottom: $gap;
-        width: 95%;
+        width: 100%;
 
         input{
           width: 100%;
@@ -52,11 +52,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  // .container section.content{
-  //    padding: 0
-    
-    
-  // }
+
   .container {
     flex-direction: column;
   }  

@@ -1,5 +1,11 @@
-import { NewCategorySelectProps } from "../types"
-import {useNotes} from '../hooks/useNotes'
+import { useNotes } from '../hooks/useNotes'
+import { Note } from "../types"
+
+export interface NewCategorySelectProps {
+  handleAddCategory: (category:string) => void
+  categories: string[]
+  note:Note
+}
 
 export const NewCategorySelect = ({categories, handleAddCategory}:NewCategorySelectProps) => {
   const ALL_CATEGORIES = useNotes().CATEGORIES

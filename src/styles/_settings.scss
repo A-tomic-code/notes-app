@@ -10,22 +10,22 @@ $primary-800: #0f4641;
 $primary-900: #0e3431;
 $primary-950: #0f2423;
 
-$secondary-50: #f1fcfa;
-$secondary-100: #bdf4ec;
-$secondary-200: #a1eee4;
-$secondary-300: #69dfd4;
-$secondary-400: #3bc6be;
-$secondary-500: #21aba4;
-$secondary-600: #188987;
-$secondary-700: #176e6d;
-$secondary-800: #175858;
-$secondary-900: #135c5c;
-$secondary-950: #08292b;
+// $secondary-50: #f1fcfa;
+// $secondary-100: #bdf4ec;
+// $secondary-200: #a1eee4;
+// $secondary-300: #69dfd4;
+// $secondary-400: #3bc6be;
+// $secondary-500: #21aba4;
+// $secondary-600: #188987;
+// $secondary-700: #176e6d;
+// $secondary-800: #175858;
+// $secondary-900: #135c5c;
+// $secondary-950: #08292b;
 
-$color-success: #8CFF98;
-$color-error: #F55536;
-$color-warn: #F9CB40;
-$color-accent: #0ede9f;
+// $color-success: #8CFF98;
+// $color-error: #F55536;
+// $color-warn: #F9CB40;
+// $color-accent: #0ede9f;
 
 $padding: 24px 48px;
 $padding-small: 12px 24px;
@@ -88,15 +88,6 @@ button {
   color: $primary-700;
   transition: border-color 0.25s;
   outline:none;
-  
-  &:hover {
-    background-color: $primary-600;
-    color: $primary-300;
-    transform: scale(1.1)
-  }&:active {
-    transform: scale(.9)
-  }
-
 }
 
 input[type="checkbox"]{

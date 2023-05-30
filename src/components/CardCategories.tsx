@@ -1,6 +1,15 @@
 import { BiTrash } from 'react-icons/bi';
-import { CardCategoriesProps } from '../types';
 import { NewCategorySelect } from './NewCategorySelect';
+import { Note } from '../types';
+
+export interface CardCategoriesProps {
+  note:Note
+  isEditable: boolean
+  categories: string[]
+  
+  handleDeleteCategory: (category:string) => void
+  handleAddCategory: (category:string) => void
+}
 
 export const CardCategories = ({categories , isEditable, handleDeleteCategory, handleAddCategory, note}:CardCategoriesProps) => {
 
@@ -13,9 +22,9 @@ export const CardCategories = ({categories , isEditable, handleDeleteCategory, h
           key={i}
           className="card__category"
           onClick={() => isEditable && handleDeleteCategory(category)}
-        ><p>
+        >
           {isEditable && <BiTrash />}
-          {category}</p>
+          <p>{category}</p>
         </span>
       );
     })}

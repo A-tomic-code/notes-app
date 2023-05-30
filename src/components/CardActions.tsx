@@ -1,6 +1,16 @@
 import { BiEditAlt, BiSave, BiTrash } from 'react-icons/bi';
-import { CardActionsProps } from '../types';
+import { Variants } from 'framer-motion';
 
+export interface CardActionsProps {
+  actions: {
+    handleSaveEdit: (id: number) => void;
+    handleDelete: (id: number) => void; 
+  }
+  id: number
+  isEditable: boolean
+  variants: Variants
+
+}
 
 export const CardActions = ({actions, id, isEditable}:CardActionsProps) => {
 

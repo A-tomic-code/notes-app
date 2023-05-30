@@ -2,9 +2,13 @@ import { useNotes } from '../hooks/useNotes';
 import { useState } from 'react';
 import { CardActions } from './CardActions';
 import { CardCategories } from './CardCategories';
-import { NoteCardProps } from '../types';
 
 import {Variants, motion} from 'framer-motion'
+import { Note } from '../types';
+
+export interface NoteCardProps {
+  note: Note;
+}
 
 export const NoteCard = ({note}: NoteCardProps) => {
   const { deleteNote, updateNote } = useNotes();
@@ -40,17 +44,21 @@ export const NoteCard = ({note}: NoteCardProps) => {
     setCategories(newCategories);
   };
 
-  const variants: Variants = {
-    hidden:{
-      opacity:0
-    },
-    visible:{
-      opacity:1,
-      transition:{duration:1}
-    }
-  } 
+  const containerVariants: Variants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
   return (
-    <motion.div className="card">
+    <motion.div 
+      className="card" 
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={containerVariants}
+      layout
+    >
 
       <CardActions
         actions={{
@@ -59,11 +67,7 @@ export const NoteCard = ({note}: NoteCardProps) => {
         }}
         id={note.id}
         isEditable={isEditable}
-        variants={variants}
-        initial={'hidden'}
-        animate={'visible'}
-        layout
-
+        variants={containerVariants}
       />
 
       {isEditable ? (

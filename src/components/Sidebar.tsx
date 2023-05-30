@@ -1,50 +1,37 @@
-import { motion } from 'framer-motion';
+import { Variants, motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNotes } from '../hooks/useNotes';
-import { Note } from '../types';
+import { useCreateForm, useCreateFormProps } from '../hooks/useCreateForm';
 
 export const Sidebar = () => {
-  const [noteTitle, setnoteTitle] = useState<string>('');
+  const [noteTitle, setNoteTitle] = useState<string>('');
   const [noteText, setNoteText] = useState<string>('');
   const [noteCategories, setNoteCategories] = useState<string[]>([]);
   const { createNote, CATEGORIES } = useNotes();
 
-  const handleNoteTitleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setnoteTitle(event.currentTarget.value);
-  };
-  const handleNoteTextChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setNoteText(event.currentTarget.value);
-  };
+  const formConfig: useCreateFormProps = {
+    createNote,
+    noteTitle,
+    setNoteTitle,
+    noteText,
+    setNoteText,
+    noteCategories,
+    setNoteCategories
+  }
+  const {
+    handleNoteTitleChange, 
+    handleSubmit, 
+    handleCategoryChange, 
+    handleNoteTextChange
+  } = useCreateForm(formConfig)
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    event.currentTarget.reset()
-    const note: Note = {
-      id: -1,
-      title: noteTitle,
-      text: noteText,
-      categories: noteCategories,
-    }
-    createNote(note);
-  };
-
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    
-    if (event.target.checked){
-      setNoteCategories((prevStatus) => [...prevStatus, event.target.value])
-    }else{
-      const newCategories = noteCategories.filter((item) => item !== event.target.value)
-      setNoteCategories(newCategories);
-    }
-
+  const variants : Variants = {
+    hover: {scale: .9},
+    tap: {scale: .7}
   }
 
   return (
-    <motion.aside className="sidebar">
+    <aside className="sidebar">
       <ul>
         <form onSubmit={handleSubmit}>
           <li>
@@ -55,6 +42,8 @@ export const Sidebar = () => {
             <input
               placeholder="Cita con el médico"
               onChange={handleNoteTitleChange}
+              name='title'
+              value={noteTitle}
             />
           </li>
 
@@ -62,6 +51,8 @@ export const Sidebar = () => {
             <textarea
               placeholder="el dia 12 a las 14:30"
               onChange={handleNoteTextChange}
+              name='text'
+              value={noteText}
             />
           </li>
 
@@ -70,16 +61,31 @@ export const Sidebar = () => {
             return (
               <li key={i}>
                 <label htmlFor={`category-${category}`}>{category}</label>
-                <input type="checkbox" id={`category-${category}`} value={category} onChange={handleCategoryChange} />
+                <motion.input 
+                  type="checkbox" 
+                  id={`category-${category}`} 
+                  value={category} 
+                  onChange={handleCategoryChange} 
+                  variants={variants}
+                  whileHover={'hover'}
+                  whileTap={'tap'}
+                />
               </li>
             );
           })} 
           
           <li>
-            <button>Crear nueva</button>
+            <motion.button 
+              whileHover={'hover'}
+              whileTap={'tap'}
+              variants={variants}
+            >
+              Crear nueva
+            </motion.button>
           </li>
-        </form>
+
+        </form>      
       </ul>
-    </motion.aside>
+    </aside>
   );
 };

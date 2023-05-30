@@ -79,6 +79,10 @@
       width: 100%;
       gap: calc($gap/2);
 
+      select{
+        text-align: end;
+      }
+
       .card__category{
         display: flex;
         justify-content: space-around;
@@ -86,14 +90,16 @@
         border-radius: 20px;
         border: 1px solid $primary-300;
         height: 30px;
+        padding: 0 7px
         
       }
       p {
         height: 100%;
-        padding: 0 7px
+        text-transform: capitalize;
       }
       svg{
-        margin-left: 5px;
+        height: 100%;
+        margin: 0 5px;
       }
     }
 }
